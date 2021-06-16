@@ -22,7 +22,7 @@
     @mouseleave="autoplay = true"
   >
     <!-- class="rounded-borders q-mt-sm" -->
-    <q-carousel-slide :name="1" img-src="/img/banner-world-health-day.jpg" />
+    <q-carousel-slide :name="1" img-src="~assets/img/banner-world-health-day.jpg" />
     <q-carousel-slide
       :name="2"
       img-src="https://cdn.quasar.dev/img/parallax1.jpg"

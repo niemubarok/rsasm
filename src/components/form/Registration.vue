@@ -5,7 +5,7 @@
     :style="!$q.platform.is.mobile ? 'border-radius:30px;' : ''"
   >
 
-  <q-img src="/img/forms-amico.png" :ratio="$q.platform.is.mobile ? 4/3 : 16/9" class="absolute-top" 
+  <q-img src="~assets/img/forms-amico.png" :ratio="$q.platform.is.mobile ? 4/3 : 16/9" class="absolute-top" 
   style="opacity:0.1"
   >
   <!-- :style="$q.platform.is.mobile ? 'opacity:0.1':'opacity:0.1'" -->

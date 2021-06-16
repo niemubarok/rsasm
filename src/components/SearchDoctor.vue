@@ -15,7 +15,7 @@
     > -->
       <!-- @remove="[(store.components.state.todaySelected = false)]" -->
       <!-- store.doctor.searchDate.value == today() -->
-        <!-- :removable="store.components.state.todaySelected" -->
+      <!-- :removable="store.components.state.todaySelected" -->
       <q-chip
         v-model:selected="store.components.state.todaySelected"
         style="z-index: 1"
@@ -26,15 +26,11 @@
             : 'bg-grey-7 text-grey-2'
         "
         dark
-        @remove="
-          [
-            (store.doctor.searchDate.value = ''),
-          ]
-        "
+        @remove="[(store.doctor.searchDate.value = '')]"
         @click="todayBtn()"
         >Hari Ini</q-chip
       >
-            <!-- (store.components.state.todaySelected = false), -->
+      <!-- (store.components.state.todaySelected = false), -->
 
       <!-- color="grey-5" -->
       <q-btn
@@ -127,7 +123,7 @@
 
     <div>
       <q-img
-        src="/img/Health professional team-bro.png"
+        src="~assets/img/Health-professional-team-bro.png"
         :class="$q.screen.gt.sm ? 'fixed-right' : 'fixed-top'"
         style="opacity: 0.2"
         :style="
@@ -226,6 +222,6 @@ export default {
 
 <style>
 .card-search {
-  background-image: url("/img/bg-search-dokter.png");
+  background-image: url("~assets/img/bg-search-dokter.png");
 }
 </style>
