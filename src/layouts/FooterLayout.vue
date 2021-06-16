@@ -6,7 +6,7 @@
     <q-separator />
     <q-toolbar class="GPL__toolbar" style="height: 64px">
       <q-btn
-        v-if="$q.screen.xs"
+        v-if="$q.screen.lt.lg"
         flat
         dense
         round
@@ -60,10 +60,8 @@
       </q-input>
 
       <!-- TOMBOL REGISTRASI -->
-        <!-- v-if="$route.path !== '/registration/' + store.doctor.selected()" -->
-      <reg-button
-        v-if="!store.doctor.selected()"
-      />
+      <!-- v-if="$route.path !== '/registration/' + store.doctor.selected()" -->
+      <reg-button />
 
       <q-btn
         v-if="$q.screen.gt.xs"

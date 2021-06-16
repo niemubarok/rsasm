@@ -5,10 +5,7 @@
     :bar-style="barStyle"
     :style="scrollAreaStyle"
   >
-    <div
-      class="row justify-center"
-      :class="rowClass"
-    >
+    <div class="row justify-center" :class="rowClass">
       <div
         v-for="(item, index) of store.doctor.filterBy.any()"
         :key="index"
@@ -42,7 +39,7 @@
 </template>
 
 <script>
-import { ref, inject, computed } from "vue";
+import { ref, inject, onMounted } from "vue";
 import CardDoctor from "/src/components/CardDoctor.vue";
 
 export default {
@@ -65,6 +62,10 @@ export default {
         return "height:100vh";
       }
     };
+
+    onMounted(() => {
+      store.doctor.searchDate.value = store.components.state.today();
+    });
 
     return {
       showScrollGuide,

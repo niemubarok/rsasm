@@ -13,16 +13,18 @@
           height="50px"
           style="max-width: 50px"
         />
-        <q-toolbar-title
-          v-if="$q.screen.gt.sm"
-          shrink
-          class="q-mr-xl row items-center no-wrap"
-        >
-          <strong>
-            <span style="color: #366835"> RS </span>
-            <span style="color: #f9a602"> Ali Sibroh Malisi</span></strong
+        <router-link to="/" style="text-decoration:none">
+          <q-toolbar-title
+            v-if="$q.screen.gt.sm"
+            shrink
+            class="q-mr-xl row items-center no-wrap"
           >
-        </q-toolbar-title>
+            <strong>
+              <span style="color: #366835"> RS </span>
+              <span style="color: #f9a602"> Ali Sibroh Malisi</span></strong
+            >
+          </q-toolbar-title>
+        </router-link>
 
         <!-- <q-space /> -->
 

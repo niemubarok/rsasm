@@ -4,6 +4,13 @@
     class="bg-grey-3 q-py-sm q-mr-sm"
     :style="!$q.platform.is.mobile ? 'border-radius:30px;' : ''"
   >
+
+  <q-img src="/img/forms-amico.png" :ratio="$q.platform.is.mobile ? 4/3 : 16/9" class="absolute-top" 
+  style="opacity:0.1"
+  >
+  <!-- :style="$q.platform.is.mobile ? 'opacity:0.1':'opacity:0.1'" -->
+
+  </q-img>
     <div>
       <navigation card-title="Form Pendaftaran Online" />
 
@@ -33,8 +40,13 @@
             leave-active-class="animated fadeOut"
           >
             <q-card
-              class="shadow-up-1 transparent q-mt-sm q-pa-sm"
-              style="border-radius: 30px; height: 250px"
+              flat
+              class="transparent q-mt-sm q-pa-sm"
+              style="
+                border-radius: 30px;
+                height: 250px;
+                border-right: 1px solid grey;
+              "
             >
               <div class="row no-wrap" style="margin-bottom: -15px">
                 <q-chip color="secondary" text-color="white">
@@ -46,6 +58,7 @@
                 <q-space />
                 <router-link to="/doctor/search" style="text-decoration: none">
                   <q-chip
+                    v-if="$route.params.id"
                     icon="swap_horiz"
                     size="xs"
                     class="shadow-2 cursor-pointer"
@@ -64,6 +77,16 @@
                 :specialist="store.doctor.selected().specialist"
                 :time="store.doctor.selected().time"
               />
+              <q-card-section
+                v-if="!$route.params.id"
+                class="row items-center justify-center q-mt-xl"
+              >
+                <router-link to="/doctor/search" style="text-decoration: none">
+                  <q-btn class="text-primary bg-white" style="border-radius: 30px" @click="store.doctor.searchDate.value = store.components.state.today()">
+                    Pilih Dokter
+                  </q-btn>
+                </router-link>
+              </q-card-section>
               <!-- style="margin-top:-2px" -->
             </q-card>
           </transition>
@@ -86,8 +109,9 @@
       >
         <div v-if="$route.params.id" v-show="showNext" class="col-md q-ml-sm">
           <q-card
-            class="shadow-up-1 transparent q-mt-sm q-pa-sm"
-            style="border-radius: 30px"
+            flat
+            class="transparent q-mt-sm q-pa-sm"
+            style="border-radius: 30px; border-left: 1px solid grey"
             :style="
               $q.screen.lt.xl && $q.screen.gt.sm
                 ? 'width:60vw;margin-left:70px;'
@@ -118,7 +142,9 @@
             <div class="row no-wrap q-pt-md items-center">
               <div
                 class="row justify-center no-wrap"
-                :style="$q.screen.lt.sm ? 'margin-left: 50px':'margin-left: 140px'"
+                :style="
+                  $q.screen.lt.sm ? 'margin-left: 50px' : 'margin-left: 140px'
+                "
               >
                 <!-- CHIP PASIEN BARU -->
                 <q-chip
@@ -151,7 +177,7 @@
                       (store.components.state.formEditing = false),
                     ]
                   "
-                  @click="store.components.state.formEditing = true"
+                  @click="[(store.components.state.formEditing = true)]"
                   >Pasien Lama</q-chip
                 >
               </div>

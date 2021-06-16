@@ -14,19 +14,25 @@
       <div class="row no-wrap items-center">
         <q-card
           flat
-          style="border-radius: 30px; border-left: 1px solid grey"
+          style="border-radius: 30px; border-top: 1px solid grey"
           class="bg-grey-3 full-width q-pa-sm q-pb-md"
         >
           <!-- <q-icon name="forward" color="primary" size="50px"/> -->
           <div>
             <q-chip>Silahkan Lengkapi Data Pasien</q-chip>
           </div>
-          <q-form @submit="[onSubmit,
-                      (store.components.state.isConfirm = true),
-                      (store.components.state.dialogConfirm = true),
-                    ]">
+          <q-form
+            @submit="
+              [
+                onSubmit,
+                (store.components.state.isConfirm = true),
+                (store.components.state.dialogConfirm = true),
+              ]
+            "
+          >
             <div>
               <q-input
+                ref="inputNik"
                 v-model="store.patient.oldPatientForm.nik"
                 mask="card"
                 :rules="[
@@ -34,7 +40,6 @@
                   (val) => val.length > 10 || 'Angka yang anda masukan kurang',
                 ]"
                 clearable
-                autofocus
                 class="q-mt-sm"
                 flat
                 label="NIK / No. KTP"
@@ -48,9 +53,26 @@
               />
               <q-input
                 v-model="store.patient.oldPatientForm.birthDate"
+                :rules="(val) => val !== '' || 'Tanggal Lahir Wajib Diisi!'"
                 clearable
+                :hint="!$q.platform.is.mobile? 'Tanggal Lahir (contoh: 20/09/1992)':''"
+                :label="$q.platform.is.mobile ? 'Tanggal Lahir': ''"
                 type="date"
-              />
+              >
+                <!-- <template #label>
+                  <div class="row items-end all-pointer-events q-ml-xl q-pl-xl">
+                    Tanggal Lahir
+
+                    <q-tooltip
+                      class="bg-grey-8"
+                      anchor="top left"
+                      self="bottom left"
+                      :offset="[0, 8]"
+                      >Tanggal Lahir</q-tooltip
+                    >
+                  </div>
+                </template> -->
+              </q-input>
               <q-input
                 v-model="store.patient.oldPatientForm.phone"
                 clearable
@@ -71,7 +93,7 @@
                   class="q-mt-md"
                   label="Konfirmasi"
                 />
-                  <!-- @click="
+                <!-- @click="
                     [
                       (store.components.state.isConfirm = true),
                       (store.components.state.dialogConfirm = true),

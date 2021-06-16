@@ -3,13 +3,17 @@ import { ref } from "vue";
 import { useRoute } from "vue-router";
 import { date } from "quasar";
 
+const today = () => {
+  return date.formatDate(Date.now, "DD-MM-YYYY");
+};
+
 const data = {
   detail: [
     {
       id: "001",
       name: "dr. Abdurrahman, Sp.P",
       specialist: "paru",
-      date: "06-05-2021",
+      date: "17-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -20,7 +24,7 @@ const data = {
       id: "002",
       name: "dr. Wulunggono, Sp.PD",
       specialist: "Internis",
-      date: "05-06-2021",
+      date: "17-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -31,7 +35,7 @@ const data = {
       id: "003",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "05-06-2021",
+      date: "17-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -42,7 +46,7 @@ const data = {
       id: "004",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "05-06-2021",
+      date: "17-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -53,7 +57,7 @@ const data = {
       id: "005",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "05-06-2021",
+      date: "17-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -64,7 +68,7 @@ const data = {
       id: "006",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "05-06-2021",
+      date: "17-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -108,7 +112,7 @@ const data = {
       id: "11",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "05-06-2021",
+      date: "10-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -119,7 +123,7 @@ const data = {
       id: "12",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "05-06-2021",
+      date: "14-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -130,7 +134,7 @@ const data = {
       id: "13",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "07-06-2021",
+      date: "15-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -141,7 +145,7 @@ const data = {
       id: "14",
       name: "dr. Vincent",
       specialist: "Gigi",
-      date: "07-06-2021",
+      date: "14-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -152,7 +156,7 @@ const data = {
       id: "15",
       name: "dr. Indra",
       specialist: "Kandungan",
-      date: "08-06-2021",
+      date: "14-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -160,40 +164,71 @@ const data = {
       url: "https://cdn.quasar.dev/img/avatar4.jpg",
     },
   ],
+  clinicSelectModel: ref([]),
+  clinicList: [
+    {
+      label: "Gigi",
+      value: 1,
+      icon: "medical_services",
+    },
+    {
+      label: "Internis",
+      value: 2,
+    },
+    {
+      label: "Kandungan",
+      value: 3,
+    },
+    {
+      label: "Mata",
+      value: 4,
+    },
+    {
+      label: "Orthopedi",
+      value: 5,
+    },
+  ],
+  clinicLists: ["Gigi", "Internis", "Kandungan", "Mata"],
   searchText: ref(""),
-  searchSpecialist: ref(""),
+  searchSpecialist: ref(null),
   searchDate: ref(""),
+  isFiltered: ref(false),
   filterBy: {
     any: function () {
       return data.detail.filter((filtered) => {
         const typedText = data.searchText.value.toLowerCase();
-        const selectedDate = data.searchDate.value.toLowerCase();
-        const selectedSpecialist = data.searchText.value.toLowerCase();
+        const selectedDate = data.searchDate.value;
+        const selectedSpecialist =
+          data.searchSpecialist.value !== null
+            ? data.searchSpecialist.value.toLowerCase()
+            : "";
 
-        const filteredByDate = filtered.date.split(' ')
+        // const filteredByDate = filtered.date.includes(selectedDate);
+
         // FILTERED BY DATE THEN BY SPECIALIST
-         if (selectedDate !== "" && selectedSpecialist !== "") {
-          return (
-            filteredByDate.filter(date => {
-              console.log(date);
-              return date.includes(selectedDate)
-              
-            })
-          );
-        }else if (selectedDate !== "") {
-          return filtered.date.includes(selectedDate);
-        } 
-        // }
-        // })
-        // return filteredBySpecialist
 
-        // if (data.searchSpecialist.value !== '') {
-        //   return (
-        //     filtered.name.toLowerCase().includes(typedText) ||
-        //     filtered.specialist.toLowerCase().includes(typedText) ||
-        //     filtered.date.includes(typedText)
-        //     );
-        //   }
+        if (selectedDate !== "") {
+          if (selectedSpecialist !== "") {
+            data.isFiltered.value = true;
+            return (
+              filtered.date == selectedDate &&
+              filtered.specialist.toLowerCase().includes(selectedSpecialist)
+            );
+          } else if (selectedSpecialist !== "") {
+            data.isFiltered.value = true;
+            return (
+              filtered.date == selectedDate &&
+              filtered.name.toLowerCase().includes(typedText)
+            );
+          }
+
+          return filtered.date.includes(selectedDate);
+        }
+        const today = date.formatDate(Date.now(), "DD-MM-YYYY");
+        return (
+          filtered.date.includes(today) &&
+          filtered.specialist.toLowerCase().includes(selectedSpecialist)
+        );
       });
     },
     time: function () {
@@ -202,10 +237,10 @@ const data = {
       });
     },
     // selectedDate: ref(""),
-    // today: function () {
-    //   const today = date.formatDate(Date.now(), "DD-MM-YYYY");
-    //   return this.filterByTime(today);
-    // },
+    today: function () {
+      const today = date.formatDate(Date.now(), "DD-MM-YYYY");
+      return this.filterByTime(today);
+    },
   },
 
   doctorId() {

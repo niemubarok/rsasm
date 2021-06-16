@@ -64,7 +64,7 @@
           label="Daftarkan"
           rounded
           color="secondary text-accent"
-          @click="onSubmit"
+          @click="[onSubmit, $router.push('/registration/registered')]"
         >
         </q-btn>
       </q-card-actions>
@@ -74,7 +74,7 @@
 
 <script>
 import { useQuasar } from "quasar";
-import { inject, reactive, ref } from "vue";
+import { inject, reactive, ref, useRoute } from "vue";
 
 export default {
   setup() {
@@ -96,6 +96,8 @@ export default {
 
       onSubmit() {
         if (accept.value !== true) {
+          
+
           $q.notify({
             color: "red-5",
             textColor: "white",

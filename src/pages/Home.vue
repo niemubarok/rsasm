@@ -51,7 +51,7 @@
             <!-- search -->
             <q-input
               ref="input"
-              v-model="store.doctor.searchText.value"
+              v-model="store.doctor.searchSpecialist.value"
               autofocus
               class="q-mr-md"
               dense
@@ -78,6 +78,7 @@
           : 'no-wrap'
       "
     />
+    
   </div>
 
   <!-- PARTNER SECTION -->
