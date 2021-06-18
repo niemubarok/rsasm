@@ -18,7 +18,7 @@ const data = {
         start: "07.50",
         end: "08.50",
       },
-      url: "/img/abdurrahman.jpg",
+      url: "~assets/img/abdurrahman.jpg",
     },
     {
       id: "002",
@@ -79,7 +79,7 @@ const data = {
       id: "8",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "06-06-2021",
+      date: "18-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -90,7 +90,7 @@ const data = {
       id: "9",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "05-06-2021",
+      date: "19-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -101,7 +101,7 @@ const data = {
       id: "10",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "05-06-2021",
+      date: "20-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -123,7 +123,7 @@ const data = {
       id: "12",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "14-06-2021",
+      date: "18-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -156,7 +156,7 @@ const data = {
       id: "15",
       name: "dr. Indra",
       specialist: "Kandungan",
-      date: "14-06-2021",
+      date: "18-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
