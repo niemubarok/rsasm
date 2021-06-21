@@ -13,7 +13,7 @@ const data = {
       id: "001",
       name: "dr. Abdurrahman, Sp.P",
       specialist: "paru",
-      date: "17-06-2021",
+      date: "21-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -24,7 +24,7 @@ const data = {
       id: "002",
       name: "dr. Wulunggono, Sp.PD",
       specialist: "Internis",
-      date: "17-06-2021",
+      date: "21-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -35,7 +35,7 @@ const data = {
       id: "003",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "17-06-2021",
+      date: "22-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -46,7 +46,7 @@ const data = {
       id: "004",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "17-06-2021",
+      date: "22-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -57,7 +57,7 @@ const data = {
       id: "005",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "17-06-2021",
+      date: "23-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -68,7 +68,7 @@ const data = {
       id: "006",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "17-06-2021",
+      date: "24-06-2021",
       time: {
         start: "07.50",
         end: "08.50",
