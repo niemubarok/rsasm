@@ -1,19 +1,22 @@
 <template>
-  <banner v-if="!store.components.state.searchBoxClicked" />
+<!-- <info-header /> -->
+  <banner
+    v-if="!store.components.state.searchBoxClicked"
+    :class="$q.screen.gt.sm ? 'q-ml-lg' : ''"
+  />
 
-  <div class="bg-primary">
+  <!-- <div class="bg-primary"></div> -->
 
-     
-  </div>
-  <div :class="$q.screen.gt.md ? 'q-ml-md ' : ''">
+  <!-- SEARCH -->
+  <div :class="$q.screen.gt.md ? 'q-ml-xl ' : ''">
     <div class="row rounded-borders q-pa-md justify-center">
       <q-expansion-item
         class="shadow-1 overflow-hidden bg-primary"
         :class="!store.components.state.leftDrawerOpen ? 'z-top' : ''"
         style="border-radius: 30px; width: 80vh"
         :style="
-          $q.screen.lt.lg && !store.components.state.searchBoxClicked
-            ? 'width:100%; margin-top:-50px'
+          $q.screen.lt.md && !store.components.state.searchBoxClicked
+            ? 'width:100%;'
             : ''
         "
         icon="people"
@@ -60,7 +63,10 @@
               placeholder="Ketik   Nama Dokter / Poli"
             >
               <template #prepend>
-                <q-icon v-if="store.doctor.searchText.value === ''" name="search" />
+                <q-icon
+                  v-if="store.doctor.searchText.value === ''"
+                  name="search"
+                />
                 <!-- <q-icon v-else name="clear" class="cursor-pointer" @click="search = ''" /> -->
               </template>
             </q-input>
@@ -69,6 +75,8 @@
       </q-expansion-item>
     </div>
   </div>
+
+  <!-- LIST DOKTER YANG PRAKTEK HARI INI -->
   <div class="rounded-borders" :class="$q.screen.gt.sm ? 'q-mx-lg' : ''">
     <carousel-doctor
       :scroll-area-style="scrollArea()"
@@ -78,7 +86,11 @@
           : 'no-wrap'
       "
     />
-    
+  </div>
+
+  <!-- ARTIKEL -->
+  <div class="q-my-md q-pl-md q-pb-md bg-grey-4">
+    <Article />
   </div>
 
   <!-- PARTNER SECTION -->
@@ -114,21 +126,23 @@ import { ref, inject } from "vue";
 // import CardDoctor from 'src/components/CardDoctor.vue'
 import PartnerLogo from "src/components/PartnerLogo.vue";
 import CarouselDoctor from "src/components/CarouselDoctor.vue";
-import { useQuasar } from 'quasar';
+import { useQuasar } from "quasar";
+import Article from "src/components/Article.vue";
+// import InfoHeader from "components/InfoHeader.vue"
 
 export default {
-  components: { Banner, PartnerLogo, CarouselDoctor },
+  components: { Banner, PartnerLogo, CarouselDoctor, Article },
   setup() {
-    const $q= useQuasar()
-    const scrollArea = ()=>{
-      console.log('scrollArea');
-      if(store.components.state.searchBoxClicked){
-        return 'height:90vh'
-      }else if($q.platform.is.mobile){
-        return 'height:30vh;'
+    const $q = useQuasar();
+    const scrollArea = () => {
+      console.log("scrollArea");
+      if (store.components.state.searchBoxClicked) {
+        return "height:90vh";
+      } else if ($q.platform.is.mobile) {
+        return "height:30vh;";
       }
-      return 'height:35vh;padding-top: 10px; margin-top: -5vh'
-    }
+      return "height:35vh;padding-top: 10px; margin-top: -5vh";
+    };
 
     function setFocus() {
       let searchId = document.getElementById("search");

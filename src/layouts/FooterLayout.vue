@@ -63,6 +63,9 @@
       <!-- v-if="$route.path !== '/registration/' + store.doctor.selected()" -->
       <reg-button />
 
+      <q-space />
+
+      <info-header />
       <q-btn
         v-if="$q.screen.gt.xs"
         flat
@@ -74,25 +77,6 @@
         label="Masuk"
         class="q-ml-sm q-px-md"
       />
-      <q-space />
-
-      <!-- <div class="q-gutter-sm row items-center no-wrap">
-          <q-btn round dense flat color="text-grey-7" icon="apps">
-            <q-tooltip>Google Apps</q-tooltip>
-          </q-btn>
-          <q-btn round dense flat color="grey-8" icon="notifications">
-            <q-badge color="red" text-color="white" floating>
-              2
-            </q-badge>
-            <q-tooltip>Notifications</q-tooltip>
-          </q-btn>
-          <q-btn round flat>
-            <q-avatar size="26px">
-              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
-            </q-avatar>
-            <q-tooltip>Account</q-tooltip>
-          </q-btn>
-        </div> -->
     </q-toolbar>
   </q-footer>
 </template>
@@ -101,9 +85,10 @@
 import { inject } from "vue";
 import { useQuasar } from "quasar";
 import RegButton from "src/components/button/RegButton.vue";
+import InfoHeader from "src/components/InfoHeader.vue";
 
 export default {
-  components: { RegButton },
+  components: { RegButton, InfoHeader },
   setup() {
     const store = inject("store");
     const $q = useQuasar();

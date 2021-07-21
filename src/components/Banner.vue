@@ -11,18 +11,21 @@
     transition-prev="slide-right"
     transition-next="slide-left"
     :class="
-      $q.screen.gt.md ? 'q-ml-lg rounded-borders q-mt-sm' : 'shadow-inset-down'
+      $q.screen.gt.md ? 'q-ml-lg  rounded-borders q-mt-sm' : 'shadow-2 roundedCard'
     "
     :style="
-      $q.screen.lt.lg
-        ? 'height:200px;width:100vw;border-bottom-left-radius:20px;border-bottom-right-radius:120px;'
-        : ''
+      $q.screen.lt.md
+        ? 'height:250px;width:100vw;border-bottom-left-radius:10px;border-bottom-right-radius:10px;'
+        : 'height:300px'
     "
     @mouseenter="autoplay = false"
     @mouseleave="autoplay = true"
   >
     <!-- class="rounded-borders q-mt-sm" -->
-    <q-carousel-slide :name="1" img-src="~assets/img/banner-world-health-day.jpg" />
+    <q-carousel-slide
+      :name="1"
+      img-src="~assets/img/banner-world-health-day.jpg"
+    />
     <q-carousel-slide
       :name="2"
       img-src="https://cdn.quasar.dev/img/parallax1.jpg"
