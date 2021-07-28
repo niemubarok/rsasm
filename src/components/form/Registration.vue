@@ -4,13 +4,14 @@
     class="bg-grey-3 q-py-sm q-mr-sm"
     :style="!$q.platform.is.mobile ? 'border-radius:30px;' : ''"
   >
-
-  <q-img src="~assets/img/forms-amico.png" :ratio="$q.platform.is.mobile ? 4/3 : 16/9" class="absolute-top" 
-  style="opacity:0.1"
-  >
-  <!-- :style="$q.platform.is.mobile ? 'opacity:0.1':'opacity:0.1'" -->
-
-  </q-img>
+    <q-img
+      src="~assets/img/forms-amico.png"
+      :ratio="$q.platform.is.mobile ? 4 / 3 : 16 / 9"
+      class="absolute-top"
+      style="opacity: 0.1"
+    >
+      <!-- :style="$q.platform.is.mobile ? 'opacity:0.1':'opacity:0.1'" -->
+    </q-img>
     <div>
       <navigation card-title="Form Pendaftaran Online" />
 
@@ -82,7 +83,14 @@
                 class="row items-center justify-center q-mt-xl"
               >
                 <router-link to="/doctor/search" style="text-decoration: none">
-                  <q-btn class="text-primary bg-white" style="border-radius: 30px" @click="store.doctor.searchDate.value = store.components.state.today()">
+                  <q-btn
+                    class="text-primary bg-white"
+                    style="border-radius: 30px"
+                    @click="
+                      store.doctor.searchDate.value =
+                        store.components.state.today()
+                    "
+                  >
                     Pilih Dokter
                   </q-btn>
                 </router-link>
@@ -102,11 +110,16 @@
       </div>
 
       <!-- Step 2 -->
+      <div v-if="!$route.params.id" v-show="showNext" class="col-md q-ml-sm">
+       <skeleton-detail-pasien />
+      </div>
       <transition
         appear
         enter-active-class="animated fadeInDown"
         leave-active-class="animated fadeOut"
       >
+        <!-- SKELETONDATAPASIEN -->
+
         <div v-if="$route.params.id" v-show="showNext" class="col-md q-ml-sm">
           <q-card
             flat
@@ -210,6 +223,7 @@ import Stepper from "./Stepper.vue";
 import OldPatientForm from "./OldPatientForm.vue";
 import DialogConfirm from "./DialogConfirm.vue";
 import Navigation from "../button/Navigation.vue";
+import SkeletonDetailPasien from "./SkeletonDetailPasien.vue";
 
 export default {
   components: {
@@ -218,6 +232,7 @@ export default {
     OldPatientForm,
     DialogConfirm,
     Navigation,
+    SkeletonDetailPasien,
   },
   setup() {
     const showCard = ref(false);

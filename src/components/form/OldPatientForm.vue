@@ -34,10 +34,10 @@
               <q-input
                 ref="inputNik"
                 v-model="store.patient.oldPatientForm.nik"
-                mask="card"
+                mask="################"
                 :rules="[
                   (val) => !!val || 'Mohon masukan NIK',
-                  (val) => val.length > 10 || 'Angka yang anda masukan kurang',
+                  (val) => val.length >= 16 || 'Angka yang anda masukan kurang',
                 ]"
                 clearable
                 class="q-mt-sm"

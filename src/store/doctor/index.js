@@ -13,7 +13,7 @@ const data = {
       id: "001",
       name: "dr. Abdurrahman, Sp.P",
       specialist: "paru",
-      date: "21-07-2021",
+      date: "22-07-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -24,7 +24,7 @@ const data = {
       id: "002",
       name: "dr. Wulunggono, Sp.PD",
       specialist: "Internis",
-      date: "21-07-2021",
+      date: "22-07-2021",
       time: {
         start: "07.50",
         end: "08.50",
@@ -35,7 +35,7 @@ const data = {
       id: "003",
       name: "dr. Vincent",
       specialist: "Kulit",
-      date: "22-06-2021",
+      date: "22-07-2021",
       time: {
         start: "07.50",
         end: "08.50",

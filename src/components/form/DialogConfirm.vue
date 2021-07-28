@@ -2,7 +2,7 @@
   <q-dialog v-model="store.components.state.dialogConfirm" persistent>
     <q-card>
       <q-banner class="bg-secondary text-bold text-primary"
-        >KONFIRMASI</q-banner
+        ><q-avatar color="primary" size="sm" text-color="secondary"><strong>3</strong></q-avatar> KONFIRMASI</q-banner
       >
 
       <q-card-section>
@@ -21,7 +21,7 @@
           </tr>
           <tr>
             <td>Tgl. Lahir</td>
-            <td>: {{ store.patient.oldPatientForm.birthDate }}</td>
+            <td>: {{ TglLahir }}</td>
           </tr>
           <tr>
             <td>No. HP</td>
@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import { useQuasar } from "quasar";
+import { useQuasar, date } from "quasar";
 import { inject, reactive, ref, useRoute } from "vue";
 
 export default {
@@ -81,6 +81,7 @@ export default {
     const $q = useQuasar();
 
     const store = inject("store");
+    const TglLahir = date.formatDate(store.patient.oldPatientForm.birthDate, "DD MMMM YYYY")
     const confirmPatientData = reactive({
       NIK: store.patient.oldPatientForm.nik,
       Nama: store.patient.oldPatientForm.name,
@@ -93,11 +94,10 @@ export default {
       confirmPatientData,
       store,
       accept,
+      TglLahir,
 
       onSubmit() {
         if (accept.value !== true) {
-          
-
           $q.notify({
             color: "red-5",
             textColor: "white",
