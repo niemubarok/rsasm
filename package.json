@@ -13,10 +13,9 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
-    "quasar": "^2.0.0-beta.1",
-    "vue-hotel-datepicker": "^4.4.0",
-    "vue3-datepicker": "^0.2.4"
+    "quasar": "^2.0.0-beta.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
